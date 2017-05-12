@@ -1,0 +1,30 @@
+{
+  "name": "bykit",
+  "version": "1.0.0",
+  "description": "social bike sharing app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Code3lue/Bykit.git"
+  },
+  "keywords": [
+    "bike",
+    "location",
+    "rent"
+  ],
+  "author": "prickly conquerors",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Code3lue/Bykit/issues"
+  },
+  "homepage": "https://github.com/Code3lue/Bykit#readme",
+  "dependencies": {
+    "mysql": "^2.13.0",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4"
+  }
+}
