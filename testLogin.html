@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>test login</title>
+    <style>
+    	#map {
+        	height: 100%;
+    	}
+    	html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+    </style>
 </head>
 <body>
     <form action="/action_page.php">
@@ -303,5 +313,22 @@
     <span class="psw">Forgot <a href="#">password?</a></span>
   </div>
 </form>
+
+<div id="map"></div>
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+          center: {lat: 42.3726399, lng: -71.1096528}
+        });
+
+        var bikeLayer = new google.maps.BicyclingLayer();
+        bikeLayer.setMap(map);
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxhkimBc8By2IOKHTmsFA4U4KI9qKI5kU&callback=initMap">
+    </script>
 </body>
+
 </html>
