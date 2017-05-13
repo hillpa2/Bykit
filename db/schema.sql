@@ -17,6 +17,7 @@ CREATE TABLE offers (
 	email_seller varchar(255) NOT NULL,
 	title varchar(255) NOT NULL,
 	type integer(10) NOT NULL,
+	rent_per_hour integer(10) NOT NULL,
 	description varchar(255) NOT NULL,
 	lower_time integer(10) NOT NULL,
 	upper_time integer(10) NOT NULL,
