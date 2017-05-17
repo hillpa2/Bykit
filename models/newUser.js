@@ -1,5 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
-
+  var User = sequelize.define("User", {
+    email: DataTypes.STRING,
+    username: DataTypes.STRING,
+    address: DataTypes.STRING,
+    locality: DataTypes.STRING,
+    country: DataTypes.STRING,
+  });
+  return User;
 };
 
 
