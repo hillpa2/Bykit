@@ -29,6 +29,15 @@ app.use(bodyParser.json({
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname)));
 
+//////////////////////////////////////////////////////
+//static directory
+app.use(express.static("app/public"));
+
+/////////////////////////////////////////////////////
+//routes
+
+require("./app/routes/html-routes.js")(app);
+require("./app/routes/user-routes.js")(app);
 
 
 
@@ -36,6 +45,8 @@ app.use(express.static(path.join(__dirname)));
 
 //////////////////////////////////////////////////////
 //app listening
-app.listen(PORT, function() {
-  console.log("App listening on PORT " + PORT);
+db.sequelize.sync().then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
 });
