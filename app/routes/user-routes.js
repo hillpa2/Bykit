@@ -18,7 +18,7 @@ module.exports = function(app) {
   // otherwise send back an error
   app.post("/api/signup", function(req, res) {
     console.log(req.body);
-    db.User.create({
+    db.users.create({
       email: req.body.email,
       password: req.body.password
     }).then(function() {
@@ -47,4 +47,61 @@ module.exports = function(app) {
       });
     }
   });
+
+  // GET route for getting all of the offers
+  app.get("/api/offers", function(req, res) {
+    // Write code here to retrieve all of the todos from the database and res.json them
+    // back to the user
+    db.offers.findAll({}).then(function(results){
+      res.json(results);
+    });
+  });
+
+  // POST route for saving a new offers. We can create offers with the data in req.body
+  app.post("/api/offers", function(req, res) {
+    // Write code here to create a new offer and save it to the database
+    // and then res.json back the new offer to the user
+    db.offers.create({
+      title: req.body.title,
+      type: req.body.type,
+      rent_per_hour: req.body.rent_per_hour,
+      description: req.body.description,
+      lower_time: req.body.lower_time,
+      upper_time: req.body.upper_time
+    }).then(function(results) {
+      res.json(results);
+    })
+  });
+
+  // DELETE route for deleting todos. We can get the id of the todo to be deleted from
+  // req.params.id
+  //app.delete("/api/todos/:id", function(req, res) {
+
+    //db.Todo.destroy({
+      //where: {
+        //id: req.params.id
+      //}
+    //}).then(function(results) {
+      //res.json(results);
+    //});
+  //});
+
+  // PUT route for updating todos. We can get the updated todo data from req.body
+  //app.put("/api/todos", function(req, res) {
+    //var updater={
+      //text: req.body.text,
+      //complete: req.body.complete
+    //}
+     
+    //var query={
+      //where: {
+        //id: req.body.id
+      //}
+    //};
+      //{ text: 'a very different title now' },
+      //{ where: { _id: 1 } }
+    //db.Todo.update(updater, query).then(function(results) {
+      //res.json(results);
+    //});
+  //});
 };
