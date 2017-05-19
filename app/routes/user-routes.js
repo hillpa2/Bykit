@@ -1,5 +1,7 @@
 // Requiring our models and passport as we've configured it
-var db = require("../../models");
+var db = require("../../models/newUser");
+var offers = require("../../models/newOffers").offers;
+//var rent = require("../../models/newRent").rent;
 //var passport = require("../config/passport");
 //temporarily removed passport
 
@@ -66,7 +68,7 @@ module.exports = function(app) {
   app.post("/api/users", function(req, res) {
     // Write code here to create a new offer and save it to the database
     // and then res.json back the new offer to the user
-    db.offers.create({
+    db.users.create({
       email: req.body.email,
       username: req.body.username,
       password: req.body.password,
