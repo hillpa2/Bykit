@@ -1,0 +1,326 @@
+@import url("font-awesome.min.css");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,300italic,400italic");
+
+
+
+	html, body, div, h1, h2, p, img, var, center, form, footer, header, table, section,ul,input,textarea {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: inherit;
+		vertical-align: baseline;
+	}
+
+	 footer, header, section, textarea {
+		display: block;
+	}
+
+	body {
+		line-height: 1;
+	}
+
+	 ul {
+		list-style: none;
+	}
+	
+
+	table {
+		border-collapse: collapse;
+		border-spacing: 0;
+	}
+
+	body {
+		-webkit-text-size-adjust: none;
+	}
+
+/* Box Model */
+
+	*, *:before, *:after {
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+
+/* Containers */
+
+	.container {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	
+
+	
+
+
+/* Basic */
+
+	body {
+		background: #f5f5f5;
+	}
+
+	body, input, select, textarea {
+		color: #777;
+		font-family: "Source Sans Pro", sans-serif;
+		font-size: 16pt;
+		font-weight: 300;
+		line-height: 1.65em;
+		letter-spacing: -0.015em;
+	}
+
+	a {
+		-moz-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+		-webkit-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+		-ms-transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+		transition: color 0.2s ease-in-out, border-bottom-color 0.2s ease-in-out;
+		color: #e89980;
+		text-decoration: none;
+	}
+
+		a:hover {
+			border-bottom-color: transparent;
+		}
+
+	
+
+/* Form */
+
+	form {
+		margin: 0 0 2em 0;
+	}
+
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	select,
+	textarea {
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		-ms-appearance: none;
+		background: #f8f8f8;
+		border-radius: 6px;
+		border: solid 1px #e5e5e5;
+		color: #646464;
+		display: block;
+		outline: 0;
+		padding: 0 1em;
+		text-decoration: none;
+		width: 100%;
+	}
+
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	select {
+		height: 2em;
+		width: 40%;
+		margin-left: auto;
+		margin-right: auto;
+
+	}
+
+	textarea {
+		padding: 0.75em 1em;
+	}
+
+	input[type="checkbox"],
+	input[type="radio"] {
+		-moz-appearance: none;
+		-webkit-appearance: none;
+		-ms-appearance: none;
+		display: block;
+		float: left;
+		margin-right: -2em;
+		opacity: 0;
+		width: 1em;
+		z-index: -1;
+	}
+
+		
+
+/* Box */
+
+	
+			
+
+
+
+	
+
+	
+/* List */	
+
+	ul {
+		list-style: disc;
+		margin: 0 0 2em 0;
+		padding-left: 1em;
+	}
+
+		ul li {
+			padding-left: 0.5em;
+		}
+
+		
+
+		
+				
+	
+
+
+
+	
+
+
+
+/* Header */
+
+	
+
+	#header {
+		background: #444;
+		color: #bbb;
+		cursor: default;
+		height: 3.25em;
+		left: 0;
+		line-height: 3.25em;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 10000;
+	}
+
+		#header h1 {
+			color: inherit;
+			height: inherit;
+			left: 1.25em;
+			line-height: inherit;
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			top: 0;
+		}
+
+		
+		#header nav {
+			height: inherit;
+			line-height: inherit;
+			position: absolute;
+			right: 0.75em;
+			top: 0;
+			vertical-align: middle;
+		}
+
+			#header nav > ul {
+				list-style: none;
+				margin: 0;
+				padding-left: 0;
+			}
+
+				#header nav > ul > li {
+					display: inline-block;
+					padding-left: 0;
+				}
+
+					#header nav > ul > li > ul {
+						display: none;
+					}
+
+
+/* Banner */
+
+	#banner {
+		background-attachment: scroll,							fixed;
+		background-color: #666;
+		background-image: url("images/overlay.png"), url("http://www.holmenwi.com/vertical/Sites/%7BDAE55C32-2E5F-4FF9-8788-A1933CE34B1B%7D/uploads/Family-cyciling(1).jpg");
+		background-position: top left,						center center;
+		background-repeat: repeat,							no-repeat;
+		background-size: auto,							cover;
+		color: #fff;
+		padding: 12em 0 20em 0;
+		text-align: center;
+	}
+
+
+		#banner h2 {
+			color: #fff;
+		}
+
+		#banner h2 {
+			font-size: 3.5em;
+			line-height: 1em;
+			margin: 0 0 0.5em 0;
+			padding: 0;
+		}
+
+		
+
+/* Main */
+
+	#main {
+		padding: 4em 0;
+	}
+
+		#main > header {
+			text-align: center;
+			margin: 0 0 3em 0;
+		}
+
+			#main > header h2 {
+				font-size: 2.75em;
+				margin: 0;
+			}
+
+		
+	body.landing #main {
+		margin-top: -14em;
+	}
+
+/* Footer */
+
+	#footer {
+		background: #f0f0f0;
+		padding: 4em 0 6em 0;
+		text-align: center;
+	}
+
+
+		#footer  {
+			color: #646464;
+			font-size: 0.9em;
+			line-height: 1em;
+			margin: 2em 0 0 0;
+			padding: 0;
+			text-align: center;
+		}
+
+			
+
+/* CTA */
+
+	#cta {
+		background: #e89980;
+		color: #f9e5df;
+		padding: 3.5em 0 4em 0;
+		text-align: center;
+	}
+
+		#cta h2 {
+			color: inherit;
+		}
+
+	
+
+	
+
+		
+				
+
+
+	
+
+
+	
+
+					
+
