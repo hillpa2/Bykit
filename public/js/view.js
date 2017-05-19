@@ -1,5 +1,5 @@
 // Getting todos from database when page loads
-  getTodos();
+  getData();
 
   // This function resets the todos displayed with new todos from the database
   function initializeRows() {
@@ -12,21 +12,13 @@
   }
 
   // This function grabs todos from the database and updates the view
-  function getTodos() {
-    $.get("/api/todos", function(data) {
-      console.log("Todos", data);
-      todos = data;
+  function getData() {
+    $.get("/api/user_data", function(data) {
+      console.log("user_data", data);
+      user_data = data;
       initializeRows();
     });
   }
-
-
-
-
-
-
-
-
 
 
 
