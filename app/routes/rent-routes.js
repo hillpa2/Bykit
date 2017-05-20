@@ -1,26 +1,74 @@
-var db = require("../../models/newRent");
+// *********************************************************************************
+// api-routes.js - this file offers a set of routes for displaying and saving data to the db
+// *********************************************************************************
 
+// Dependencies
+// =============================================================
+
+// Requiring our models
+var db = require("../../models");
+
+// Routes
+// =============================================================
 module.exports = function(app) {
-	// GET route for getting all of the rent
+
+  // GET route for getting all of the rent
   app.get("/api/rent", function(req, res) {
-    // Write code here to retrieve all of the rent from the database and res.json them
-    // back to the user
-    db.rent.findAll({}).then(function(results){
-      res.json(results);
+    var query = {};
+    if (req.query.users_id) {
+      query.usersId = req.query.users_id;
+    }
+    // 1. Add a join here to include all of the userss to these rent
+    db.rent.findAll({
+      include: [db.users],
+      where: query
+    }).then(function(dbrent) {
+      res.json(dbrent);
     });
   });
 
-  // POST route for saving a new offers. We can create offers with the data in req.body
-  //app.post("/api/rent", function(req, res) {
-    // Write code here to create a new offer and save it to the database
-    // and then res.json back the new offer to the user
-    //db.rent.create({
-      //email_buyer: req.body.email_buyer,
-      //offer_id: req.body.offer_id,
-      //lower_time: req.body.lower_time,
-      //upper_time: req.body.upper_time
-    //}).then(function(results) {
-      //res.json(results);
-    //})
-  //});
-}
+  // Get rotue for retrieving a single rent
+  app.get("/api/rent/:id", function(req, res) {
+    // 2. Add a join here to include the users who wrote the rent
+    db.rent.findOne({
+      include: [db.users],
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbrent) {
+      console.log(dbrent);
+      res.json(dbrent);
+    });
+  });
+
+  // rent route for saving a new rent
+  app.rent("/api/rent", function(req, res) {
+    db.rent.create(req.body).then(function(dbrent) {
+      res.json(dbrent);
+    });
+  });
+
+  // DELETE route for deleting rent
+  app.delete("/api/rent/:id", function(req, res) {
+    db.rent.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbrent) {
+      res.json(dbrent);
+    });
+  });
+
+  // PUT route for updating rent
+  app.put("/api/rent", function(req, res) {
+    db.rent.update(
+      req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      }).then(function(dbrent) {
+        res.json(dbrent);
+      });
+  });
+};

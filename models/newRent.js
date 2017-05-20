@@ -1,18 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
   var rent = sequelize.define("rent", {
     email_buyer: DataTypes.STRING,
-    offer_id: DataTypes.STRING,
-    lower_time: DataTypes.STRING,
-    upper_time: DataTypes.STRING
-  }, {
-    // Here we'll pass a second "classMethods" object into the define method
-    // This is for any additional configuration we want to give our models
-      // We're saying that we want our Author to have Posts
+    offer_id: DataTypes.INTEGER,
+    lower_time: DataTypes.INTEGER,
+    upper_time: DataTypes.INTEGER
+  },
+    {
+      // We're saying that we want our Author to have rents
       classMethods: {
-        timestamps: false
         associate: function(models) {
-          // Associating Author with Posts
-          // When an Author is deleted, also delete any associated Posts
+          // An Author (foreignKey) is required or a rent can't be made
           rent.belongsTo(models.users, {
             foreignKey: {
               allowNull: false
@@ -20,6 +17,7 @@ module.exports = function(sequelize, DataTypes) {
           });
         }
       }
-    });
+    }
+  );
   return rent;
 };

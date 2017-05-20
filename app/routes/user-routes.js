@@ -1,37 +1,38 @@
-//Requiring our models and passport as we've configured it
-var db = require("../../models/newUser");
-//var offers = require("../../models/newOffers").offers;
-//var rent = require("../../models/newRent").rent;
-//var passport = require("../config/passport");
-//temporarily removed passport
+var db = require("../models");
 
 module.exports = function(app) {
-  
-  // GET route for getting all of the offers
   app.get("/api/users", function(req, res) {
-    // Write code here to retrieve all of the todos from the database and res.json them
-    // back to the user
-    db.users.findAll({}).then(function(results){
-      res.json(results);
+    // 1. Add a join to include all of each users's Posts
+    db.users.findAll({}).then(function(dbusers) {
+      res.json(dbusers);
     });
   });
 
-  // POST route for saving a new offers. We can create offers with the data in req.body
-  app.post("/api/users", function(req, res) {
-    // Write code here to create a new offer and save it to the database
-    // and then res.json back the new offer to the user
-    db.users.create({
-      email: req.body.email,
-      username: req.body.username,
-      password: req.body.password,
-      address: req.body.address,
-      locality: req.body.locality,
-      country: req.body.country,
-    }).then(function(results) {
-      res.json(results);
-    })
+  app.get("/api/users/:id", function(req, res) {
+    // 2; Add a join to include all of the users's Posts here
+    db.users.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbusers) {
+      res.json(dbusers);
+    });
   });
 
+  app.post("/api/users", function(req, res) {
+    db.users.create(req.body).then(function(dbusers) {
+      res.json(dbusers);
+    });
+  });
 
+  app.delete("/api/users/:id", function(req, res) {
+    db.users.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbusers) {
+      res.json(dbusers);
+    });
+  });
 
 };

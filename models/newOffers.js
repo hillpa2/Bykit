@@ -8,12 +8,11 @@ module.exports = function(sequelize, DataTypes) {
     lower_time: DataTypes.INTEGER,
     upper_time: DataTypes.INTEGER
   },
-  {
-      // We're saying that we want our Author to have Posts
+    {
+      // We're saying that we want our Author to have offerss
       classMethods: {
-        timestamps: false,
         associate: function(models) {
-          // An Author (foreignKey) is required or a Post can't be made
+          // An Author (foreignKey) is required or a offers can't be made
           offers.belongsTo(models.users, {
             foreignKey: {
               allowNull: false
@@ -21,6 +20,7 @@ module.exports = function(sequelize, DataTypes) {
           });
         }
       }
-    });
-  //return offers;
+    }
+  );
+  return offers;
 };

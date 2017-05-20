@@ -6,24 +6,24 @@ module.exports = function(sequelize, DataTypes) {
     address: DataTypes.STRING,
     locality: DataTypes.STRING,
     country: DataTypes.STRING
-  }, {
+  },
     // Here we'll pass a second "classMethods" object into the define method
     // This is for any additional configuration we want to give our models
-      // We're saying that we want our Author to have Posts
+    {
+      // We're saying that we want our users to have Posts
       classMethods: {
-        timestamps: false
         associate: function(models) {
-          // Associating Author with Posts
-          // When an Author is deleted, also delete any associated Posts
-          users.hasMany(models.offers, {
+          // Associating users with Posts
+          // When an users is deleted, also delete any associated Posts
+          users.hasMany(models.Post, {
             onDelete: "cascade"
           });
         }
       }
-    });
+    }
+  );
   return users;
 };
-
 
 
 
