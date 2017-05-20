@@ -27,6 +27,7 @@ app.use(bodyParser.json({
   type: "application/json"
 }));
 app.use(bodyParser.json());
+//app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(express.static(path.join(__dirname)));
 
 //////////////////////////////////////////////////////
@@ -37,16 +38,16 @@ app.use(express.static("app/public"));
 //routes
 
 require("./app/routes/html-routes.js")(app);
+require("./app/routes/offer-routes.js")(app);
+require("./app/routes/rent-routes.js")(app);
 require("./app/routes/user-routes.js")(app);
 
 
-
-
-
+var db = require("./models");
 //////////////////////////////////////////////////////
 //app listening
-//db.sequelize.sync().then(function() {
+db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
-//});
+});
